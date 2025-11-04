@@ -1,44 +1,143 @@
 import React from "react";
+import { IoMdHome } from "react-icons/io";
+import { FaCalculator } from "react-icons/fa6";
+import { IoPersonSharp } from "react-icons/io5";
+import { TbHelp } from "react-icons/tb";
+import Logo from "./Logo";
+import { IoMdMenu } from "react-icons/io";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+// https://preview.enableds.com/product/?theme=duodrawerpwa
+// 
 
-export default function Header() {
-  return <><nav className="h-14 bg-white border-b border-gray-300 fixed w-full bottom-0 z-10 sm:top-0 shadow-sm drop-shadow-sm ">
-  <div className="h-full w-full max-w-4xl mx-auto flex items-center justify-start flex-shrink">
+export default function Header({sideMenu, setSideMenu}) {
+  return <><nav className="h-14 bg-white border-b border-gray-300 fixed w-full bottom-0 z-10 top-0 shadow-sm drop-shadow-sm ">
+  <div className="h-full w-full  mx-auto flex items-center justify-between flex-shrink  max-w-screen-sm px-5">
       
-      <div className='hidden sm:flex items-center gap-0'>
-      <svg fill="#a23d07" height="40px" width="60px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-51.2 -51.2 614.40 614.40" xmlSpace="preserve" transform="rotate(0)" stroke="#a23d07" strokeWidth="0.00512"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#CCCCCC" strokeWidth="1.024"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M501.801,67.315H10.199C4.567,67.315,0,71.881,0,77.514v356.972c0,5.633,4.567,10.199,10.199,10.199h491.602 c5.632,0,10.199-4.566,10.199-10.199V77.514C512,71.881,507.433,67.315,501.801,67.315z M20.398,87.713h225.402v69.355H20.398 V87.713z M373.291,177.466v68.845H138.709v-68.845H373.291z M20.398,177.466h97.912v68.845H20.398V177.466z M20.398,266.709 h225.402v68.335H20.398V266.709z M118.311,424.287H20.398v-68.845h97.912V424.287z M373.291,424.287H138.709v-68.845h234.582 V424.287z M491.602,424.287h-97.912v-68.845h97.912V424.287z M491.602,335.044H266.199v-68.335h225.402V335.044z M491.602,246.311 h-97.912v-68.845h97.912V246.311z M491.602,157.068H266.199V87.713h225.402V157.068z"></path> </g> </g> <g> <g> <path d="M355.952,396.749h-70.375c-5.632,0-10.199,4.566-10.199,10.199c0,5.633,4.567,10.199,10.199,10.199h70.375 c5.632,0,10.199-4.566,10.199-10.199C366.151,401.315,361.584,396.749,355.952,396.749z"></path> </g> </g> <g> <g> <path d="M252.94,396.749h-8.159c-5.632,0-10.199,4.566-10.199,10.199c0,5.633,4.567,10.199,10.199,10.199h8.159 c5.632,0,10.199-4.566,10.199-10.199C263.139,401.315,258.572,396.749,252.94,396.749z"></path> </g> </g> </g></svg>
-      <h3>Bricks</h3>
+      <div className='items-center gap-0'>
+        <Logo>Bricks</Logo>
+      </div>
+      <div className="border rounded-full  px-8 py-1 border-teal-400 hidden sm:block">Wall Calculation</div>
+      <div className="flex gap-3">
+        <Link to="./notifications" className="cursor-pointer"><IoIosNotificationsOutline className="h-5 w-auto text-teal-500"></IoIosNotificationsOutline></Link>
+        <div className="cursor-pointer" onClick={()=>setSideMenu(prev=>!prev)}><IoMdMenu className="h-5 w-auto text-teal-500"></IoMdMenu></div>
       </div>
 
-    <div className="flex justify-center flex-grow">
-      <div className="gap-2 sm:gap-4 flex text-gray-800 max-w-screen-[250px]:px-4">
 
-          <a href="#home" className="flex align-middle justify-center mr-4 gap-0">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
-            </svg>
-            <h2 className="hidden sm:block">Home</h2>
-          </a>
-
-          <a href="#home" className="flex align-middle justify-center mr-4 ">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2 text-gray-500" viewBox="0 0 384 512"><path d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM96 64H288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zm32 160a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zM96 352a32 32 0 1 1 0-64 32 32 0 1 1 0 64zM64 416c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM192 256a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zm64-64a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zM288 448a32 32 0 1 1 0-64 32 32 0 1 1 0 64z"/></svg>
-          <h2 className="hidden sm:block">Calculators</h2>
-          </a>
-
-          <a href="#home" className="flex align-middle justify-center mr-4 gap-0">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2 text-gray-500"  viewBox="0 0 576 512"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
-          <h2 className="hidden sm:block">About</h2>
-          </a>
-
-          <a href="#home" className="flex align-middle justify-center mr-4 gap-0 text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-2 cursor-pointer "  viewBox="0 0 320 512">
-          <path d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/>
-          </svg>
-          <h2 className="hidden sm:block">Help</h2>
-          </a>
-      </div>
-    </div>
   </div>
 </nav>
-<div className="hidden sm:block h-14 top-0 w-full bg-slate-400"></div>
+<div className=" h-14 top-0 w-full bg-slate-400"></div>
+
+<div className={`fixed top-0 z-50  h-full w-full   ${ sideMenu?"left-[0px]":"left-[-3000px]"}`} onClick={()=>setSideMenu(prev=>!prev)}>
+<div className={`fixed top-0 z-50 bg-gray-50 h-full w-[200px] shadow-md  transition-[left] duration-300 ${sideMenu?"left-[0px]":"left-[-300px]"}`}>
+  <div className="mx-auto">
+    <aside className="w-full" aria-label="Sidebar">
+      
+      <div className='items-center gap-0 flex justify-center p-4'>
+        <Logo>Bricks</Logo>
+      </div>
+
+      <div className="px-3 py-4 overflow-y-auto rounded text-left ">
+        <ul className="space-y-2">
+          <li>
+            <Link to="./"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+              </svg>
+              <span className="ml-3">Home</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/calculators"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                </path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Calculators</span>
+              
+            </Link>
+          </li>
+          <li>
+            <Link to="/inbox"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z">
+                </path>
+                <path
+                  d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z">
+                </path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Inbox</span>
+              <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/find_people"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                  clipRule="evenodd"></path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Find People</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/shop"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd"
+                  d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                  clipRule="evenodd"></path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Shop</span>
+              <span className="inline-flex items-center justify-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300">Pro</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="sign_in"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd"
+                  d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
+                  clipRule="evenodd"></path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Sign In</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/sign_up"
+              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+              <svg className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd"
+                  d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
+                  clipRule="evenodd"></path>
+              </svg>
+              <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+</div>
 </>;
+}
+Header.propTypes = {
+  sideMenu: PropTypes.bool,
+  setSideMenu: PropTypes.func
 }

@@ -8,11 +8,21 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "deploy": "npm run build && firebase deploy",
     "push": "git push -u -f origin master"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
+    "firebase": "^10.8.0",
+    "html-to-image": "^1.11.11",
+    "pwa-asset-generator": "^6.3.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.22.0",
+    "tailwind-merge": "^2.2.1",
+    "uuid": "^9.0.1",
+    "vite-plugin-pwa": "^0.17.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
